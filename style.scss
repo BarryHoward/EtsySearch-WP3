@@ -5,6 +5,7 @@
 	padding: 0px;
 	vertical-align: top;
 	font-family: "Graphik Web","Arial","Helvetica",sans-serif;
+
 }
 
 a {
@@ -30,13 +31,19 @@ a {
 		font-weight: 600;
 		width: 315px;
 		height: 27px;
-		margin-right: -5px;
+		margin-right: -6px;
+		display: inline-block;
 	}
 	.search-button {
 		height: 27px;
-		width: 62px;
+		width: 64px;
 		margin: 0px;
-		border-radius: 5px;
+		border-radius: 3px;
+		background: #34A7C2;
+		border: none;
+		color: white;
+		display: inline-block;
+		font-size: 9pt;
 	}
 }
 .content-container {

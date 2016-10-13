@@ -1,8 +1,9 @@
 * {
-	border: 1px solid black;
+	// border: 1px solid black;
 	box-sizing: border-box;
 	margin:0px;
 	padding: 0px;
+	vertical-align: top;
 }
 
 .content-container {
@@ -16,4 +17,19 @@
 .content {
 	display: inline-block;
 	width: 875px;
+}
+
+.block {
+	display: inline-block;
+	max-height: 200px;
+	max-width: 200px;
+	overflow: hidden;
+	font-size: 8pt;
+	margin-right: 15px;
+	margin-bottom: 15px;
+
+	img{
+		width: 215px;
+		height: 170px
+	}
 }

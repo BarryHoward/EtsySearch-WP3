@@ -2,11 +2,55 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  vertical-align: top; }
+  vertical-align: top;
+  font-family: "Graphik Web","Arial","Helvetica",sans-serif; }
+
+a {
+  text-decoration: none;
+  color: black; }
+
+.header {
+  padding: 10px;
+  padding-left: 25px; }
+  .header img {
+    width: 65px;
+    height: 43px; }
+  .header .search {
+    margin-top: 9px;
+    margin-left: 10px;
+    display: inline-block; }
+  .header .search-bar {
+    padding: 7px;
+    font-size: 9pt;
+    font-weight: 600;
+    width: 315px;
+    height: 27px;
+    margin-right: -5px; }
+  .header .search-button {
+    height: 27px;
+    width: 62px;
+    margin: 0px;
+    border-radius: 5px; }
+
+.content-container {
+  padding-top: 25px;
+  background: #F4F5F0;
+  border-top: 2px solid #E5E6E0; }
+
+.content-intro {
+  font-size: 10pt;
+  padding-bottom: 5px; }
 
 .side-bar {
   display: inline-block;
-  width: 185px; }
+  width: 185px;
+  margin-right: 20px;
+  margin-left: 36px; }
+  .side-bar .side-menu {
+    width: 185px;
+    min-height: 300px;
+    background: white;
+    border: 2px solid #E5E6E0; }
 
 .content {
   display: inline-block;
@@ -14,12 +58,29 @@
 
 .block {
   display: inline-block;
-  max-height: 200px;
+  max-height: 240px;
   max-width: 200px;
   overflow: hidden;
   font-size: 8pt;
   margin-right: 15px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  background: white;
+  border: thin solid lightgrey; }
   .block img {
     width: 215px;
     height: 170px; }
+  .block p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 5px;
+    padding-bottom: 0px; }
+  .block .author {
+    float: left;
+    color: grey;
+    padding: 5px; }
+  .block .price {
+    float: right;
+    color: #79BD4A;
+    padding: 5px; }

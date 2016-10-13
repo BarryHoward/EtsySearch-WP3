@@ -9,7 +9,7 @@ function addBlock (index) {
 	var author = item.Shop.shop_name;
 	var price = item.price;
 	var urlTop = `<a class="block-link" href="${item.url}"><div class="block"><img src="${img}">`;
-	var urlBottom = `<p>${title}</p><span class="author">${author}</span><span class="price">${price}</span></div></a>`;
+	var urlBottom = `<p>${title}</p><span class="author">${author}</span><span class="price">$${price}</span></div></a>`;
 	return `${urlTop}${urlBottom}`;
 }
 

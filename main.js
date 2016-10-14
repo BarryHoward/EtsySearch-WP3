@@ -1,4 +1,4 @@
-var numOfDisp = 16;
+var numOfDisp = data.results.length;
 var results = data.results;
 var gridHTML = "";
 
@@ -21,3 +21,24 @@ for (i=0; i<numOfDisp; i++){
 $(".search-bar").attr("placeholder", `${data.params.keywords}`);
 $("#All-Categories").html(`<p>All categories > "${data.params.keywords}" (${data.count} Results)</p>`);
 $(".grid").html(gridHTML);
+
+
+
+//Create page Buttons
+//-----------------------------------------------
+
+function makePB(char){
+	return `<button class="page-button">${char}</button>`;
+}
+
+var pageHTML = "";
+pageHTML = pageHTML + makePB("<");
+for (i=1; i<9; i++){
+	pageHTML = pageHTML + makePB(i);
+}
+pageHTML = pageHTML + makePB("...");
+pageHTML = pageHTML + makePB("250");
+pageHTML = pageHTML + makePB(">");
+
+console.log(pageHTML);
+$(".page-container").html(pageHTML);

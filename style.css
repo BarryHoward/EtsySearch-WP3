@@ -70,25 +70,47 @@ a {
         width: 20px;
         height: 20px; }
 
+.departments ul {
+  margin-left: 20px; }
+
+.departments li {
+  line-height: 35px;
+  font-size: 9pt;
+  display: inline;
+  margin-left: 12px; }
+  .departments li a {
+    color: grey; }
+
 .content-container {
   padding-top: 25px;
   background: #F4F5F0;
   border-top: 2px solid #E5E6E0; }
 
 .content-intro {
-  font-size: 10pt;
-  padding-bottom: 5px; }
+  font-size: 8pt;
+  padding-bottom: 5px;
+  font-weight: bolder; }
 
 .side-bar {
   display: inline-block;
   width: 185px;
   margin-right: 20px;
-  margin-left: 36px; }
+  margin-left: 30px; }
   .side-bar .side-menu {
     width: 185px;
     min-height: 300px;
     background: white;
-    border: 2px solid #E5E6E0; }
+    border: 2px solid #E5E6E0;
+    font-size: 8pt;
+    font-weight: bolder;
+    padding: 9px 8px; }
+    .side-bar .side-menu .category-list {
+      padding: 8px 10px; }
+    .side-bar .side-menu .category-link {
+      color: #45AFC6; }
+    .side-bar .side-menu li {
+      list-style: none;
+      padding-bottom: 7px; }
 
 .content {
   display: inline-block;

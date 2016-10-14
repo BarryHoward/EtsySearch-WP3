@@ -3,6 +3,7 @@ Etsy Search - Weekend Project 3
 October 13, 2017
 
 github link to project: https://github.com/BarryHoward/EtsySearch-WP3
+
 githut link to deployed website:  https://barryhoward.github.io/EtsySearch-WP3/
 
 

@@ -8,19 +8,26 @@ function addBlock (index) {
 	var title = item.title;
 	var author = item.Shop.shop_name;
 	var price = item.price;
-	var urlTop = `<a class="block-link" href="${item.url}"><div class="block"><img src="${img}">`;
-	var urlBottom = `<p>${title}</p><span class="author">${author}</span><span class="price">$${price}</span></div></a>`;
-	return `${urlTop}${urlBottom}`;
+
+	var introHTML = `<a class="block-link" href="${item.url}"><div class="block">`;
+	var imgHTML = `<img class="item-image" src="${img}">`;
+	var hamHeartHTML = `<div class="hamHeart-cont"><a href="#"><img class="heart" src="assets/heart.png"></a><a href="#"><img class="hamburger" src="assets/hamburger.png"></a></div>`;
+	var infoHTML = `<p>${title}</p><span class="author">${author}</span><span class="price">$${price}</span>`;
+	var outroHTML = `</div></a>`;
+	var totalHTML = `${introHTML}${imgHTML}${hamHeartHTML}${infoHTML}${outroHTML}`;
+	return totalHTML;
 }
 
 for (i=0; i<numOfDisp; i++){
 	var newHTML = addBlock(i);
-	gridHTML = `${gridHTML}${newHTML}`;
+	$(".grid").append(newHTML);
 }
 
 $(".search-bar").attr("placeholder", `${data.params.keywords}`);
 $("#All-Categories").html(`<p>All categories > "${data.params.keywords}" (${data.count} Results)</p>`);
-$(".grid").html(gridHTML);
+
+
+//Hamburger and Heart
 
 
 
@@ -40,5 +47,8 @@ pageHTML = pageHTML + makePB("...");
 pageHTML = pageHTML + makePB("250");
 pageHTML = pageHTML + makePB(">");
 
-console.log(pageHTML);
 $(".page-container").html(pageHTML);
+
+$("#hamburger").hide();
+$(".block").hover(function(event){$("#hamburger").show()}, function(){$("#hamburger").hide()});
+

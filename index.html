@@ -7,7 +7,6 @@
 		<link href="https://fonts.googleapis.com/css?family=Domine|Libre+Baskerville|Lora|Source+Serif+Pro|Taviraj" rel="stylesheet">
 	</head>
 	<body>
-
 		<div class="header-container">
 			<div class="header">
 				<img src="http://apifortress.com/wp-content/uploads/2015/08/etsy.jpg">
@@ -62,7 +61,20 @@
 				</div>
 			</div>
 			<div class="content">
-				<p class="content-intro" id="All-Categories">All categories ></p>
+				<div class="above-grid">
+					<div class="content-intro" id="All-Categories"></div>
+					<div class="sort-by">Sort by:
+						<button class="sort-button">Relevancy</button>
+						<div class = "sort-by-menu closed" id="sort1">
+							<ul class = "sort-by-list">
+								<li><button class = "sort-type" id = "MostRecent">Most Recent</button></li>
+								<li><button class = "sort-type" id = "Relevancy">Relevancy</button></li>
+								<li><button class = "sort-type" id = "HighestPrice">Highest Price</button></li>
+								<li><button class = "sort-type" id = "LowestPrice">Lowest Price</button></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 				<div class="grid"></div>
 				<div class="related-container">
 					<p>Related to whiskey</p>

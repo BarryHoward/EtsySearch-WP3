@@ -1,6 +1,58 @@
 var numOfDisp = data.results.length;
-var results = data.results;
-var gridHTML = "";
+var orgResults = data.results;
+var results = orgResults.slice();
+
+$(".search-bar").attr("placeholder", `${data.params.keywords}`);
+$("#All-Categories").html(`<p><a href="#">All categories</a> > "${data.params.keywords}" (${data.count} Results)</p>`);
+drawGrid();
+
+//Create page Buttons
+//-----------------------------------------------
+
+function makePB(char){
+	return `<button class="page-button">${char}</button>`;
+}
+var pageHTML = "";
+pageHTML = pageHTML + makePB("<");
+for (i=1; i<9; i++){
+	pageHTML = pageHTML + makePB(i);
+}
+pageHTML = pageHTML + makePB("...");
+pageHTML = pageHTML + makePB("250");
+pageHTML = pageHTML + makePB(">");
+
+$(".page-container").html(pageHTML);
+
+
+//Open/Close Sort Menu
+// ------------------------------------
+$(".sort-button").click(function(){
+	$("#sort1").toggleClass("closed");
+})
+
+//Re-Sort
+//---------------------------------------
+
+$(".sort-type").click(newSort);
+
+function newSort(event){
+	var target = $(event.target);
+	var butPush = target.attr('id');
+	if (butPush==="HighestPrice"){
+		results.sort(priceHighest);
+	} else if (butPush==="LowestPrice"){
+		results.sort(priceLowest);
+	} else if (butPush==="Relevancy"){
+		results=orgResults.slice();
+	} else if (butPush==="Recent"){
+		results.sort(recent)
+	}
+
+	drawGrid();
+	$("#sort1").toggleClass("closed");
+	$(".sort-button").html(butPush);
+	console.log(butPush);
+}
 
 function addBlock (index) {
 	var item = results[index];
@@ -18,37 +70,44 @@ function addBlock (index) {
 	return totalHTML;
 }
 
-for (i=0; i<numOfDisp; i++){
-	var newHTML = addBlock(i);
-	$(".grid").append(newHTML);
+function drawGrid(){
+	$(".grid").html("");
+	for (i=0; i<numOfDisp; i++){
+		var newHTML = addBlock(i);
+		$(".grid").append(newHTML);
+	}
 }
 
-$(".search-bar").attr("placeholder", `${data.params.keywords}`);
-$("#All-Categories").html(`<p>All categories > "${data.params.keywords}" (${data.count} Results)</p>`);
+// Sorting Functions
+//---------------------------------
 
-
-//Hamburger and Heart
-
-
-
-//Create page Buttons
-//-----------------------------------------------
-
-function makePB(char){
-	return `<button class="page-button">${char}</button>`;
+function priceHighest(a, b){
+	if (Number(a.price)>Number(b.price)){
+		return -1;
+	} else if (Number(b.price)>Number(a.price)){
+		return 1;
+	} else {
+		return 0;
+	}
 }
 
-var pageHTML = "";
-pageHTML = pageHTML + makePB("<");
-for (i=1; i<9; i++){
-	pageHTML = pageHTML + makePB(i);
+function priceLowest(a, b){
+	if (Number(a.price)>Number(b.price)){
+		return 1;
+	} else if (Number(b.price)>Number(a.price)){
+		return -1;
+	} else {
+		return 0;
+	}
 }
-pageHTML = pageHTML + makePB("...");
-pageHTML = pageHTML + makePB("250");
-pageHTML = pageHTML + makePB(">");
 
-$(".page-container").html(pageHTML);
+function recent(a,b){
+	if (Number(a.creation_tsz)<Number(b.creation_tsz)){
+		return 1;
+	} else if (Number(b.creation_tsz)<Number(a.creation_tsz)){
+		return -1;
+	} else {
+		return 0;
+	}
 
-$("#hamburger").hide();
-$(".block").hover(function(event){$("#hamburger").show()}, function(){$("#hamburger").hide()});
-
+}

@@ -1,5 +1,6 @@
 $lightBlue: #45AFC6;
 
+
 * {
 	box-sizing: border-box;
 	margin: 0px;
@@ -8,13 +9,19 @@ $lightBlue: #45AFC6;
 	font-family: "Graphik Web","Arial","Helvetica",sans-serif;
 }
 
-body {
-}
-
 a {
 	text-decoration: none;
 	color: black;
 }
+
+button:focus {
+	outline:0;
+}
+
+button {
+	cursor: pointer;
+}
+
 .header {
 	padding: 10px;
 	padding-left: 25px;
@@ -80,7 +87,6 @@ a {
 		.cart-box {
 			display: inline-block;
 			width: 50px;
-			// height: 45px;
 			font-size: 8pt;
 			padding-left: 10px;
 			border-left: 1px solid lightgrey;
@@ -114,35 +120,99 @@ a {
 		}
 	}
 }
+
+
+$grid-width: 900px;
+$side-bar-width: 185px;
+$side-bar-marL: 25px;
+$side-bar-marR: 20px;
+
+
+
+
 .content-container {
+
 	padding-top: 25px;
 	background: #F4F5F0;
 	border-top: 2px solid #E5E6E0;
 }
-.content-intro{
-	font-size: 8pt;
-	padding-bottom: 5px;
-	font-weight: bolder;
-}
-.side-bar {
-	display: inline-block;
-	width: 185px;
-	height: 100%;
-	margin-right: 20px;
-	margin-left: 25px;
 
-	.side-menu {
-		width: 185px;
-		min-height: 300px;
-		background: white;
-		border: 2px solid #E5E6E0;
+
+	.content-intro{
 		font-size: 8pt;
+		padding-bottom: 5px;
 		font-weight: bolder;
-		padding: 9px 8px;
+		display: inline-block;
+	}
 
-		.category-list {
-			padding: 8px 10px;
+	.sort-by{
+		float: right;
+		margin-right: 20px;
+		font-size: 8pt;
+		position: relative;
+		min-width: 100px;
+
+		.sort-button{
+			border: none;
+			color: $lightBlue;
+			background: transparent;
+			margin-bottom: 5px;
+			margin-right: 10px
 		}
+
+		.sort-by-menu{
+			position: absolute;
+			z-index: 5;
+			display: block;
+			background: white;
+			width: 100%;
+			border: 1px solid lightgrey;
+
+			.sort-by-list{
+				width: 100%;
+			}
+			li {
+				margin: 0px;
+				list-style: none;
+				width: 100%;
+				padding: 0px;
+				
+
+				button{
+					border: none;
+					background: transparent;
+					width: 100%;
+					padding: 10px;
+					text-align: left;
+				}
+			}
+			li:hover{
+				background: lightgrey;
+			}
+		}
+		.closed {
+			display: none;
+		}
+	}
+	.side-bar {
+		display: inline-block;
+		width: $side-bar-width;
+		height: 100%;
+		margin-right: $side-bar-marR;
+		margin-left: $side-bar-marL;
+
+		.side-menu {
+			width: 185px;
+			min-height: 300px;
+			background: white;
+			border: 2px solid #E5E6E0;
+			font-size: 8pt;
+			font-weight: bolder;
+			padding: 9px 8px;
+
+			.category-list {
+				padding: 8px 10px;
+			}
 
 		.category-link{
 			color: $lightBlue;
@@ -155,107 +225,123 @@ a {
 	}
 }
 
-.content {
-	display: inline-block;
-	padding-bottom: 20px;
+.sort-by:after{
+	content: "";
+	border-style: solid;
+	border-width: 4px 4px 0 4px;
+	border-color: #CBC9C7 transparent transparent transparent;
+  	position: absolute;
+  	right: 0px;
+  	top: 5px;
 }
 
-.grid{
-	display: inline-block;
-	max-width: 950px;
-}
+	.content {
+		display: inline-block;
+		padding-bottom: 20px;
+		width: $grid-width;
 
-.block {
-	display: inline-block;
-	height: 205px;
-	width: 210px;
-	overflow: hidden;
-	font-size: 8pt;
-	margin-right: 15px;
-	margin-bottom: 15px;
-	background: white;
-	border: thin solid lightgrey;
-	position: relative;
-
-	.item-image{
-		width: 100%;
-		height: 165px;
-	}
-
-	.hamHeart-cont {
-		display: none;
-		position: absolute;
-		top: 5px;
-		right: 0px;
-
-
-
-		@mixin hamHeartStyle(){
-			background: white;
-			border: 1px solid lightgrey;
-			padding: 4px;
-			border-radius: 5px;
-			margin-right: 5px;
-			height: 25px;
-			width: 25px;
-		}	
-
-		.hamburger{
-			@include hamHeartStyle();
-			width: 35px;
-			padding-right: 15px;
-			position: relative;
+		#All-Categories {
+			a{
+				color: $lightBlue;
+			}
 		}
-		.heart{
-			@include hamHeartStyle();
 
+	}
+
+	.grid{
+		display: inline-block;
+		max-width: $grid-width;
+		padding-right: -15px;
+	}
+
+	.block {
+		display: inline-block;
+		height: 205px;
+		width: 210px;
+		overflow: hidden;
+		font-size: 8pt;
+		margin-right: 15px;
+		margin-bottom: 15px;
+		background: white;
+		border: thin solid lightgrey;
+		position: relative;
+
+		.item-image{
+			width: 100%;
+			height: 165px;
 		}
-		.block:after{
-				content: "";
-				border-style: solid;
-				border-width: 80px 80px 0 80px;
-				border-color: black;
-			  	position: absolute;
-			  	right: -10px;
-			  	top: 0px;
+
+		.hamHeart-cont {
+			display: none;
+			position: absolute;
+			top: 5px;
+			right: 0px;
+
+			.hamburger:hover{
+				background: #EAEAEA;
+			}
+			.heart:hover{
+				background: #EAEAEA;
+			}
+
+
+			@mixin hamHeartStyle(){
+				background: white;
+				border: 1px solid lightgrey;
+				padding: 4px;
+				border-radius: 5px;
+				margin-right: 5px;
+				height: 25px;
+				width: 25px;
+			}	
+
+			.hamburger{
+				@include hamHeartStyle();
+				width: 35px;
+				padding-right: 15px;
+				position: relative;
+			}
+			.heart{
+				@include hamHeartStyle();
+
+			}
+		}
+		&:hover{
+			.hamHeart-cont{
+				display: block;
+			}
+		}
+
+		.hamHeart-cont:after{
+			content: "";
+			border-style: solid;
+			border-width: 4px 4px 0 4px;
+			border-color: #CBC9C7 transparent transparent transparent;
+		  	position: absolute;
+		  	right: 10px;
+		  	top: 10px;
+		}
+
+		p {
+			white-space: nowrap;
+	  		overflow: hidden;
+	  		text-overflow: ellipsis;
+	  		width: 100%;
+	  		padding: 5px;
+	  		padding-bottom: 0px;
+		}
+		.author {
+			float: left;
+			color: grey;
+			padding: 5px;
+		}
+
+		.price {
+			float: right;
+			color: #79BD4A;
+			padding: 5px;
 		}
 	}
-	&:hover{
-		.hamHeart-cont{
-			display: block;
-		}
-	}
-
-	.hamHeart-cont:after{
-		content: "";
-		border-style: solid;
-		border-width: 4px 4px 0 4px;
-		border-color: #CBC9C7 transparent transparent transparent;
-	  	position: absolute;
-	  	right: 10px;
-	  	top: 10px;
-	}
-
-	p {
-		white-space: nowrap;
-  		overflow: hidden;
-  		text-overflow: ellipsis;
-  		width: 100%;
-  		padding: 5px;
-  		padding-bottom: 0px;
-	}
-	.author {
-		float: left;
-		color: grey;
-		padding: 5px;
-	}
-
-	.price {
-		float: right;
-		color: #79BD4A;
-		padding: 5px;
-	}
-}
 
 
 
@@ -300,16 +386,3 @@ a {
 	border: 1px solid lightgrey;
 	font-weight: bold;
 }
-
-
-
-// .block {
-// 	.hamHeart-cont {
-// 		display: none;
-// 	}
-// }
-// .block:hover {
-// 	.hamHeart-cont {
-// 		display: block;
-// 	}
-// }

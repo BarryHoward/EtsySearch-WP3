@@ -9,6 +9,12 @@ a {
   text-decoration: none;
   color: black; }
 
+button:focus {
+  outline: 0; }
+
+button {
+  cursor: pointer; }
+
 .header {
   padding: 10px;
   padding-left: 25px;
@@ -92,7 +98,45 @@ a {
 .content-intro {
   font-size: 8pt;
   padding-bottom: 5px;
-  font-weight: bolder; }
+  font-weight: bolder;
+  display: inline-block; }
+
+.sort-by {
+  float: right;
+  margin-right: 20px;
+  font-size: 8pt;
+  position: relative;
+  min-width: 100px; }
+  .sort-by .sort-button {
+    border: none;
+    color: #45AFC6;
+    background: transparent;
+    margin-bottom: 5px;
+    margin-right: 10px; }
+  .sort-by .sort-by-menu {
+    position: absolute;
+    z-index: 5;
+    display: block;
+    background: white;
+    width: 100%;
+    border: 1px solid lightgrey; }
+    .sort-by .sort-by-menu .sort-by-list {
+      width: 100%; }
+    .sort-by .sort-by-menu li {
+      margin: 0px;
+      list-style: none;
+      width: 100%;
+      padding: 0px; }
+      .sort-by .sort-by-menu li button {
+        border: none;
+        background: transparent;
+        width: 100%;
+        padding: 10px;
+        text-align: left; }
+    .sort-by .sort-by-menu li:hover {
+      background: lightgrey; }
+  .sort-by .closed {
+    display: none; }
 
 .side-bar {
   display: inline-block;
@@ -116,13 +160,26 @@ a {
       list-style: none;
       padding-bottom: 7px; }
 
+.sort-by:after {
+  content: "";
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: #CBC9C7 transparent transparent transparent;
+  position: absolute;
+  right: 0px;
+  top: 5px; }
+
 .content {
   display: inline-block;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  width: 900px; }
+  .content #All-Categories a {
+    color: #45AFC6; }
 
 .grid {
   display: inline-block;
-  max-width: 950px; }
+  max-width: 900px;
+  padding-right: -15px; }
 
 .block {
   display: inline-block;
@@ -143,6 +200,10 @@ a {
     position: absolute;
     top: 5px;
     right: 0px; }
+    .block .hamHeart-cont .hamburger:hover {
+      background: #EAEAEA; }
+    .block .hamHeart-cont .heart:hover {
+      background: #EAEAEA; }
     .block .hamHeart-cont .hamburger {
       background: white;
       border: 1px solid lightgrey;
@@ -162,14 +223,6 @@ a {
       margin-right: 5px;
       height: 25px;
       width: 25px; }
-    .block .hamHeart-cont .block:after {
-      content: "";
-      border-style: solid;
-      border-width: 80px 80px 0 80px;
-      border-color: black;
-      position: absolute;
-      right: -10px;
-      top: 0px; }
   .block:hover .hamHeart-cont {
     display: block; }
   .block .hamHeart-cont:after {

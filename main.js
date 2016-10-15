@@ -44,7 +44,8 @@ function newSort(event){
 		results.sort(priceLowest);
 	} else if (butPush==="Relevancy"){
 		results=orgResults.slice();
-	} else if (butPush==="Recent"){
+	} else if (butPush==="MostRecent"){
+		console.log(butPush)
 		results.sort(recent)
 	}
 

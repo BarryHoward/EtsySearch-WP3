@@ -1,10 +1,52 @@
-var numOfDisp = data.results.length;
+// Initializations
+//--------------------------------------------
+
 var orgResults = data.results;
-var results = orgResults.slice();
+var totalResults = orgResults.slice();
+var filteredResults = orgResults.slice();
 
 $(".search-bar").attr("placeholder", `${data.params.keywords}`);
 $("#All-Categories").html(`<p><a href="#">All categories</a> > "${data.params.keywords}" (${data.count} Results)</p>`);
-drawGrid();
+drawGrid(totalResults);
+
+
+//Category Menu
+//---------------------------------------
+
+categoryArray=[];
+totalResults.forEach(function(element){
+	if (!categoryArray.includes(element.taxonomy_path[0])){
+		categoryArray.push(element.taxonomy_path[0]);
+	}
+})
+categoryArray.sort();
+
+var categoryHTML = "";
+categoryArray.forEach(function(element){
+	var idConcat = element.split(" ").join("");
+	var catHTML = `<li><button class="category-button" id="${idConcat}">${element}</button></li>`
+	categoryHTML = `${categoryHTML}${catHTML}`;
+})
+
+//Filter by Category
+//------------------------------------------
+
+$(".category-list").html(categoryHTML);
+$(".category-button").click(filterCategories);
+
+function filterCategories(event){
+	var target = $(event.target);
+	var butPush = target.attr('id');
+	filteredResults = totalResults.filter(function(elem){
+		if (elem.taxonomy_path[0].split(" ").join("")===butPush){
+			return true;
+		} else {
+			return false;
+		}
+	})
+	drawGrid(filteredResults);
+}
+
 
 //Create page Buttons
 //-----------------------------------------------
@@ -39,24 +81,35 @@ function newSort(event){
 	var target = $(event.target);
 	var butPush = target.attr('id');
 	if (butPush==="HighestPrice"){
-		results.sort(priceHighest);
+		filteredResults.sort(priceHighest);
+		totalResults.sort(priceHighest);
 	} else if (butPush==="LowestPrice"){
-		results.sort(priceLowest);
+		filteredResults.sort(priceLowest);
+		totalResults.sort(priceLowest);
 	} else if (butPush==="Relevancy"){
-		results=orgResults.slice();
+		filteredResults=orgResults.filter(function(element){
+			if (filteredResults.includes(element)){
+				return true;
+			} else {
+				return false;
+			}
+		})
+		totalResults=orgResults.slice();
 	} else if (butPush==="MostRecent"){
-		console.log(butPush)
-		results.sort(recent)
+		filteredResults.sort(recent);
+		totalResults.sort(recent);
 	}
 
-	drawGrid();
+	drawGrid(filteredResults);
 	$("#sort1").toggleClass("closed");
 	$(".sort-button").html(butPush);
-	console.log(butPush);
 }
 
-function addBlock (index) {
-	var item = results[index];
+// Grid Functions
+//------------------------------------------------
+
+function addBlock (index, resArray) {
+	var item = resArray[index];
 	var img = item.Images[0].url_170x135;
 	var title = item.title;
 	var author = item.Shop.shop_name;
@@ -71,10 +124,10 @@ function addBlock (index) {
 	return totalHTML;
 }
 
-function drawGrid(){
+function drawGrid(array){
 	$(".grid").html("");
-	for (i=0; i<numOfDisp; i++){
-		var newHTML = addBlock(i);
+	for (i=0; i<array.length; i++){
+		var newHTML = addBlock(i, array);
 		$(".grid").append(newHTML);
 	}
 }

@@ -160,11 +160,14 @@ button {
     padding: 9px 8px; }
   .side-bar .category-list {
     padding: 8px 10px; }
-    .side-bar .category-list button {
-      border: none;
-      background: transparent; }
   .side-bar .category-button {
-    color: #45AFC6; }
+    color: #45AFC6;
+    border: none;
+    background: transparent; }
+  .side-bar #AllCategories {
+    color: black; }
+  .side-bar .category-button:hover {
+    text-decoration: underline; }
   .side-bar li {
     list-style: none;
     padding-bottom: 7px; }

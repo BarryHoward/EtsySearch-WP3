@@ -217,17 +217,23 @@ $side-bar-marR: 20px;
 		.side-menu-radio{
 			@include side-menu-stuff();
 		}
+
+		
 		.category-list {
 			padding: 8px 10px;
-
-			button {
-				border:none;
-				background: transparent;
-			}
 		}
 
 		.category-button{
 			color: $lightBlue;
+			border:none;
+			background: transparent;
+		}
+
+		#AllCategories{
+			color: black;
+		}
+		.category-button:hover{
+			text-decoration: underline;
 		}
 
 		li {

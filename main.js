@@ -37,13 +37,17 @@ $(".category-button").click(filterCategories);
 function filterCategories(event){
 	var target = $(event.target);
 	var butPush = target.attr('id');
-	filteredResults = totalResults.filter(function(elem){
-		if (elem.taxonomy_path[0].split(" ").join("")===butPush){
-			return true;
-		} else {
-			return false;
-		}
-	})
+	if (butPush === "AllCategories"){
+		filteredResults = totalResults.slice();
+	} else {
+		filteredResults = totalResults.filter(function(elem){
+			if (elem.taxonomy_path[0].split(" ").join("")===butPush){
+				return true;
+			} else {
+				return false;
+			}
+		})
+	}
 	drawGrid(filteredResults);
 }
 

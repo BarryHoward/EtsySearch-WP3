@@ -5,6 +5,8 @@ var orgResults = data.results;
 var totalResults = orgResults.slice();
 var filteredResults = orgResults.slice();
 
+$("title").html(`Etsy Search for "${data.params.keywords}"`);
+
 $(".search-bar").attr("placeholder", `${data.params.keywords}`);
 $("#All-Categories").html(`<p><a href="#">All categories</a> > "${data.params.keywords}" (${data.count} Results)</p>`);
 drawGrid(totalResults);

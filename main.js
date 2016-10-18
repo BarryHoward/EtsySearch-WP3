@@ -127,6 +127,7 @@ function addBlock (index, resArray) {
 	var infoHTML = `<p>${title}</p><span class="author">${author}</span><span class="price">$${price}</span>`;
 	var outroHTML = `</div></a>`;
 	var totalHTML = `${introHTML}${imgHTML}${hamHeartHTML}${infoHTML}${outroHTML}`;
+	console.log(totalHTML);
 	return totalHTML;
 }
 
